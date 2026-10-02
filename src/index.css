@@ -1,0 +1,174 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@font-face {
+  font-family: "LikeSnow";
+  src: url("./assets/fonts/LikeSnow.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@theme {
+  --font-display: "Outfit", system-ui, sans-serif;
+  --font-body: "Source Sans 3", system-ui, sans-serif;
+  --font-brand: "LikeSnow", "Outfit", system-ui, sans-serif;
+
+  --color-brand-50: #e8f6f3;
+  --color-brand-100: #c5ebe3;
+  --color-brand-200: #9ad9cc;
+  --color-brand-300: #6bc4b2;
+  --color-brand-400: #3fa896;
+  --color-brand-500: #0d7377;
+  --color-brand-600: #0a5c5f;
+  --color-brand-700: #084649;
+  --color-brand-800: #063235;
+  --color-brand-900: #041f21;
+
+  --color-ink-50: #f7f8f9;
+  --color-ink-100: #eef0f3;
+  --color-ink-200: #d9dde3;
+  --color-ink-300: #b8c0cb;
+  --color-ink-400: #8b96a5;
+  --color-ink-500: #647084;
+  --color-ink-600: #4a5568;
+  --color-ink-700: #364152;
+  --color-ink-800: #1f2937;
+  --color-ink-900: #111827;
+
+  --color-surface: #ffffff;
+  --color-surface-2: #f7f8f9;
+
+  --color-accent: #e8a838;
+  --color-success: #16a34a;
+  --color-danger: #dc2626;
+  --color-warning: #d97706;
+}
+
+/* Deep navy + teal/green dark theme — light palette inverted */
+.dark {
+  --color-brand-50: #0a2224;
+  --color-brand-100: #0d3033;
+  --color-brand-200: #134e52;
+  --color-brand-300: #1a6b70;
+  --color-brand-400: #2dd4bf;
+  --color-brand-500: #14b8a6;
+  --color-brand-600: #5eead4;
+  --color-brand-700: #99f6e4;
+  --color-brand-800: #ccfbf1;
+  --color-brand-900: #f0fdfa;
+
+  --color-ink-50: #070b16;
+  --color-ink-100: #0d1424;
+  --color-ink-200: #1a2438;
+  --color-ink-300: #2a3954;
+  --color-ink-400: #6b7c99;
+  --color-ink-500: #8fa0bd;
+  --color-ink-600: #b4c0d6;
+  --color-ink-700: #d0d8e8;
+  --color-ink-800: #e4eaf5;
+  --color-ink-900: #f3f6fc;
+
+  --color-surface: #111b2e;
+  --color-surface-2: #0d1526;
+
+  --color-accent: #f0b429;
+  --color-success: #34d399;
+  --color-danger: #f87171;
+  --color-warning: #fbbf24;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  color: var(--color-ink-800);
+  background: var(--color-ink-50);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  letter-spacing: -0.02em;
+}
+
+.font-brand {
+  font-family: var(--font-brand);
+  letter-spacing: 0.02em;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-ink-300);
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-ink-400);
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--color-ink-100) 25%,
+    var(--color-ink-200) 50%,
+    var(--color-ink-100) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.4s ease-in-out infinite;
+  border-radius: 8px;
+}
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-up {
+  animation: fade-up 0.35s ease-out both;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.85); }
+}
+
+.live-dot {
+  animation: pulse-dot 1.5s ease-in-out infinite;
+}
+
+/* Soft utility helpers for dark surfaces */
+.dark .shadow-sm,
+.dark .shadow-md,
+.dark .shadow-lg,
+.dark .shadow-xl,
+.dark .shadow-2xl {
+  --tw-shadow-color: rgb(0 0 0 / 0.45);
+}
